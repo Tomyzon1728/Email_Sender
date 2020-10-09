@@ -3,7 +3,7 @@ from tkinter import *
 import tkinter as tk
 from PIL import Image,ImageTk
 from tkinter import messagebox
-#import smptlib
+import smptlib
 from tkinter.scrolledtext import ScrolledText
 
 # creating the foundation of the graphical user interface whilst giving appropriate title and reshaping to taste.
@@ -13,8 +13,22 @@ root.geometry("400x300")
 root.maxsize(400,300)
 root.minsize(400,300)
 
+# creating a login function which checks for validity of an email as well as empty str for password
 def Login():
-    pass
+    e=email.get( )
+    p=password.get( )
+    if "@gmail.com" not in e or e== " ":
+    	messagebox.showerror('Login error',"Please write a valid email")
+    elif p== " ":
+    	messagebox.showerror('Login error',"Password shouldn't be left empty")
+    else:
+    	try:
+    		s= smtplib.SMTP( 'smtp.gmail.com',587)
+    		s.starttls( )
+    		s.login(e,p)
+    		message.showinfo("Login success","You have logged to gmail successfully")
+    		root=tk.Tk()
+    		root.geometry("500x400")
 
 # creating header of the GUI
 header= Label(root,bg="orange",width=300,height=2)
