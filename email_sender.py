@@ -30,6 +30,18 @@ def Login():
     		root=tk.Tk()
     		root.geometry("500x400")
 
+def send( ):
+	r=recipetent.get( )
+	sub=subject.get( )
+	m=message.get('1.0',END)
+	if "@gmail.com" not in r or r==" ":
+		messagebox.showerror("Sending mail error","write a valid Email")
+	elif m ==" ":
+		messagebox.showerror("Sending mail error","message shouldn't be empty")
+	else:
+		s.sendmail(r,e,f'subject :{sub}\n\n {m}')
+		messagebox.showinfo("sucess","Your message has been sent sucessfully")
+			
 # creating header of the GUI
 header= Label(root,bg="orange",width=300,height=2)
 header.place(x=0,y=0)
@@ -41,14 +53,22 @@ logo=Label(root,image=img,borderwidth=0)
 logo.place(x=150,y=38)
 e=Label(root,text="Email Address",font=('veranda',10,'bold'))
 e.place(x=100,y=130)
+
+# creating an entry box for email and password
 email=Entry(root,width=30,relief=RIDGE,borderwidth=3)
 email.place(x=100,y=150)
 p=Label(root,text="Password",font=('veranda',10,'bold'))
 p.place(x=100,y=190)
 password=Entry(root,width=30,relief=RIDGE,borderwidth=3)
 password.place(x=100,y=210)
+
+# creating login button
 login=Button(root,text="Log in",padx=30,bg="orange",relief=RIDGE,borderwidth=1,font=('veranda',10,'bold'),cursor="hand2",command=Login)
 login.place(x=135,y=240)
+
+# creating send Button
+send = Button(root,text="Send",padx=30,bg="orange",relief=RIDGE,borderwidth=1,font=('veranda',10,'bold'),cursor="hand2",command=send)
+send.place(x=350,y=360)
 
 # closing the GUI
 root.mainloop( )
