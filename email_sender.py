@@ -41,6 +41,28 @@ def send( ):
 	else:
 		s.sendmail(r,e,f'subject :{sub}\n\n {m}')
 		messagebox.showinfo("sucess","Your message has been sent sucessfully")
+		
+def logout( ):
+			s.quit( )
+			root.destroy( )
+			header1=Label(root,bg="orange",width =300,height=2)
+			header1.place(x=0,y=0)
+			h2=Label(root,text="Email Sender",bg="orange",fg="black",font=('veranda',13,'bold'))
+			h2.place(x=175,y=5)
+			logout=Button(root,text="Log Out",padx=20,bg="orange",relief=RIDGE,borderwidth=1,font=('veranda',10,'bold'),cursor="hand2",command=logout)
+			logout.place(x=390,y=38)
+			r=Label(root,text="Recipetent Email Address",font('veranda',10,'bold'))
+			r.place(x=130,y=130)
+			recipetent=Entry(root,width=30,relief=RIDGE,borderwidth=3)
+			recipetent.place(x=130,y=150)
+			sub=Label(root,text="Subject",font=('veranda',10,'bold'))
+			sub.place(x=130,y=190)
+			subject=Entry(root,width=30,relief=RIDGE,borderwidth=3)
+			subject.place(x=130,y=210)
+			m=Label(root,text="Message",font=('veranda',10,'bold'))
+			m.place(x=130,y=250)
+			message=ScrolledText(root,width=40,height=5,relief=RIDGE,borderwidth=3)
+			message.place(x=130,y=270)
 			
 # creating header of the GUI
 header= Label(root,bg="orange",width=300,height=2)
