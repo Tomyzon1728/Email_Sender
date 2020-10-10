@@ -41,6 +41,12 @@ def send( ):
 	else:
 		s.sendmail(r,e,f'subject :{sub}\n\n {m}')
 		messagebox.showinfo("sucess","Your message has been sent sucessfully")
+	send = Button(root,text="Send",padx=30,bg="orange",relief=RIDGE,borderwidth=1,font=('veranda',10,'bold'),cursor="hand2",command=send)
+	send.place(x=350,y=360)
+	root.mainloop( )
+	except:
+		messagebox.showerror('Login Error',"Failed to login, either your email or password is wrong.")
+		
 		
 def logout( ):
 			s.quit( )
@@ -87,10 +93,6 @@ password.place(x=100,y=210)
 # creating login button
 login=Button(root,text="Log in",padx=30,bg="orange",relief=RIDGE,borderwidth=1,font=('veranda',10,'bold'),cursor="hand2",command=Login)
 login.place(x=135,y=240)
-
-# creating send Button
-send = Button(root,text="Send",padx=30,bg="orange",relief=RIDGE,borderwidth=1,font=('veranda',10,'bold'),cursor="hand2",command=send)
-send.place(x=350,y=360)
 
 # closing the GUI
 root.mainloop( )
